@@ -12,11 +12,12 @@ author: Anish Singh Walia
 In this tutorial we are going to create a desktop notifier using R and [Notifier](https://github.com/gaborcsardi/notifier) package.
 Notifier package is available on Github and below is the method to download and install a package from Github.
 
-```{r}
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
 
 #install.packages("devtools") if devtools is not installed
 devtools::install_github("gaborcsardi/notifier")
-
+library(notifier)
 
 ```
+
 
