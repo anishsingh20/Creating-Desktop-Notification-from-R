@@ -9,8 +9,7 @@ author: Anish Singh Walia
 
 
 
-In this tutorial we are going to create a desktop notifier using R and [Notifier](https://github.com/gaborcsardi/notifier) package.
-Notifier package is available on Github and below is the method to download and install a package from Github.
+#### In this tutorial we are going to create a desktop notifier using R and [Notifier](https://github.com/gaborcsardi/notifier) package.Notifier package is available on Github and below is the method to download and install a package from Github.
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 
@@ -19,5 +18,16 @@ devtools::install_github("gaborcsardi/notifier")
 library(notifier)
 
 ```
+
+
+#### How does Notifier works ?
+
+a) __MAC OS__ : It uses MAC's terminal-Notifier tool(https://github.com/julienXX/terminal-notifier).
+
+
+b) __Linux based and BSD based systems__:It Notify-send command line tool is used. This requires the libnotify-bin package on Ubuntu/Debian and similar systems, or the libnotify package on RedHat/CentOS/Fedora and similar systems.
+
+c) __Windows__: Windows versions, notifier uses the toaster tool, see https://github.com/nels-o/toaster.
+
 
 
