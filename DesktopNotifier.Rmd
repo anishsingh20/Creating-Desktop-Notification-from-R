@@ -30,4 +30,19 @@ b) __Linux based and BSD based systems__:It Notify-send command line tool is use
 c) __Windows__: Windows versions, notifier uses the toaster tool, see https://github.com/nels-o/toaster.
 
 
+#### Usage of Notifier
+
+__"notifier"__ uses one basic function to create a notification or as the function says, “notify“. The function notify() takes the below three arguments:
+
+1)title — Message title.
+
+2)msg — Actual Notification Message.
+
+3)image — Image, along with the message — optional.
+
+
+
+
+
+
 
