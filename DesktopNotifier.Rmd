@@ -45,9 +45,17 @@ b) msg — Actual Notification Message.
 c) image — Image, along with the message — optional.
 
 
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+
+##making the first notification message
+
+notify(
+  title = "This is Anish",
+  msg= c("This is my first notifier")
+)
 
 
-
+```
 
 
 
