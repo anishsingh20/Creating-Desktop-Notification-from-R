@@ -45,13 +45,16 @@ b) msg — Actual Notification Message.
 c) image — Image, along with the message — optional.
 
 
-```{r,echo=FALSE,warning=FALSE,message=FALSE}
+```{r ,warning=FALSE,message=FALSE}
 
 ##making the first notification message
 
 notify(
-  title = "This is Anish",
-  msg= c("This is my first notifier")
+  title = "World Clock",
+  msg= c(
+    paste0(" India - ", format(Sys.time(), format = "%H:%M:%S" ,tz = "Asia/Calcutta"),"\n",
+                 paste0("Singapore - ", format(Sys.time(), format = "%H:%M:%S" ,tz = "Asia/Singapore"),"\n"))
+  )
 )
 
 
@@ -60,6 +63,18 @@ notify(
 
 
 
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+
+install.packages("randquotes")
+library(randquotes)
+
+notify(
+  title = "Quote of the Day",
+  msg = c(randquote_simple())
+)
+
+```
 
 
 
