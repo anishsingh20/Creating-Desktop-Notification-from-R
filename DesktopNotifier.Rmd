@@ -1,0 +1,18 @@
+---
+title: "Creating Desktop Notifier in R"
+output: html_notebook
+author: Anish Singh Walia
+---
+
+-------------
+
+
+
+
+In this tutorial we are going to create a desktop notifier using R and [Notifier](https://github.com/gaborcsardi/notifier) package.
+
+
+```{r}
+plot(cars)
+```
+
