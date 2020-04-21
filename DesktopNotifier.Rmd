@@ -16,10 +16,15 @@ author: Anish Singh Walia
 #install.packages("devtools") if devtools is not installed
 devtools::install_github("gaborcsardi/notifier")
 install.packages("randquotes")
+install.packages("beepr")
+
 library(notifier)
 library(rvest)
 library(randquotes)
 library(janitor)
+
+#for notification sounds
+require(beepr)
 
 
 ```
@@ -135,7 +140,7 @@ StateCOVID_19 <- na.omit(StateCOVID_19)
 
  msg1 <- paste("Confirmed Cases: ",Confirmed,", Revovered:",Recovered)
  msg2<-  paste("Deaths: ",Deaths, ", Active:\n ",Active)
- msg3 <- paste(StateCOVID_19[2,2],"\nConfirmed:",StateCOVID_19[2,3],",", "Recovered:  ",StateCOVID_19[2,4],",", "Deaths:  ",StateCOVID_19[2,5], ",", "Active: ",StateCOVID_19[2,6])
+ msg3 <- paste(StateCOVID_19[2,2],"\nConfirmed:",StateCOVID_19[2,3],",", "Recovered:  ",StateCOVID_19[2,4],",\n", "Deaths:  ",StateCOVID_19[2,5], ",", "Active: ",StateCOVID_19[2,6])
 
  
 repeat {
@@ -149,6 +154,9 @@ repeat {
     title = "COVID-19 India Summary",
     msg = c(msg1,msg2,msg3)
 )
+  
+  #adding the beep notification sound
+  beep()
 
   #repeat
   sleepTime <- startTime + 60 - Sys.time()
@@ -157,6 +165,8 @@ repeat {
 
   
 }
+ 
+ 
 
 
 ```
