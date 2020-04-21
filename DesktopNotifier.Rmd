@@ -79,9 +79,9 @@ notify(
 
 repeat {
   
-  
-  
+  # getting the current time
   startTime <- Sys.time() 
+  
   sleepTime <- startTime + 60 - Sys.time()
   if (sleepTime > 0)
   Sys.sleep(sleepTime)
