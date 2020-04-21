@@ -107,7 +107,7 @@ repeat {
 
 #### Scraping a table using rvest
 
-Let's try to get a HTML table and get notifed after regular intervals. Here we can scrape a HTML table using [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/) package.
+Let's try to get a HTML table and get notifed after regular intervals with a beep sound using [beepr](https://www.r-project.org/nosvn/pandoc/beepr.html). Here we can scrape a HTML table using [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/) package.
 
 
 ```{r message=FALSE,warning=FALSE}
