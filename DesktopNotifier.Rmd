@@ -74,6 +74,22 @@ notify(
   msg = c(randquote_simple())
 )
 
+
+# making a function to send notifications every 1 minute
+
+repeat {
+  
+  
+  
+  startTime <- Sys.time() 
+  sleepTime <- startTime + 60 - Sys.time()
+  if (sleepTime > 0)
+  Sys.sleep(sleepTime)
+  
+
+}
+
+
 ```
 
 
