@@ -156,7 +156,7 @@ repeat {
 )
   
   #adding the beep notification sound
-  beep()
+   beep("wilhelm")
 
   #repeat
   sleepTime <- startTime + 60 - Sys.time()
@@ -166,7 +166,7 @@ repeat {
   
 }
  
- 
+
 
 
 ```
