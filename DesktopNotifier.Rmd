@@ -87,6 +87,7 @@ repeat {
     msg = c(randquote_simple())
 )
 
+  #repead
   sleepTime <- startTime + 60 - Sys.time()
   if (sleepTime > 0)
   Sys.sleep(sleepTime)
@@ -96,6 +97,10 @@ repeat {
 
 
 ```
+
+
+
+Let's try to get a HTML table and get notifed after regular intervals. Here we can scrape a HTML table using [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/) package.
 
 
 
