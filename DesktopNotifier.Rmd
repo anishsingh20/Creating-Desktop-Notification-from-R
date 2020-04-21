@@ -128,6 +128,37 @@ StateCOVID_19 <- na.omit(StateCOVID_19)
 
 
 
+ Confirmed<- StateCOVID_19$Confirmed[1]
+ Deaths <- StateCOVID_19$Deaths[1]
+ Recovered <- StateCOVID_19$Recovered[1]
+ Active <- StateCOVID_19$Active[1]
+
+ msg1 <- paste("Confirmed Cases: ",Confirmed,", Revovered:",Recovered)
+ msg2<-  paste("Deaths: ",Deaths, ", Active:\n ",Active)
+ msg3 <- paste(StateCOVID_19[2,2],"\nConfirmed:",StateCOVID_19[2,3],",", "Recovered:  ",StateCOVID_19[2,4],",", "Deaths:  ",StateCOVID_19[2,5], ",", "Active: ",StateCOVID_19[2,6])
+
+ 
+repeat {
+  
+  # getting the current time
+  startTime <- Sys.time() 
+  
+  
+  notify(
+    
+    title = "COVID-19 India Summary",
+    msg = c(msg1,msg2,msg3)
+)
+
+  #repeat
+  sleepTime <- startTime + 60 - Sys.time()
+  if (sleepTime > 0)
+  Sys.sleep(sleepTime)
+
+  
+}
+
+
 ```
 
 
