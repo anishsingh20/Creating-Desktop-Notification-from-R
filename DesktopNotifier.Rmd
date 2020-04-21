@@ -16,6 +16,9 @@ author: Anish Singh Walia
 #install.packages("devtools") if devtools is not installed
 devtools::install_github("gaborcsardi/notifier")
 library(notifier)
+install.packages("randquotes")
+library(randquotes)
+
 
 ```
 
@@ -66,8 +69,7 @@ notify(
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 
-install.packages("randquotes")
-library(randquotes)
+
 
 
 
@@ -80,19 +82,17 @@ repeat {
   startTime <- Sys.time() 
   
   
-   notify(
-  title = "Quote of the Day",
-  msg = c(randquote_simple())
+  notify(
+    
+    title = "Quote of the Day",
+    msg = c(randquote_simple())
 )
-  
-   
-   
+
   sleepTime <- startTime + 60 - Sys.time()
   if (sleepTime > 0)
   Sys.sleep(sleepTime)
+
   
-
-
 }
 
 
