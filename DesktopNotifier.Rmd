@@ -68,6 +68,8 @@ notify(
 
 #### Making a notifier which will send notifications after regular Intervals:
 
+There are multiple use cases for the desktop notifications for example you want to get notified every time the script gets completed.
+
 ```{r warning=FALSE,message=FALSE}
 
 
