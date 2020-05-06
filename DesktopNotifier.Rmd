@@ -105,38 +105,18 @@ repeat {
 ```
 
 
-#### Scraping a table using rvest
+#### Making a notifier which sends COVID-19 cases summary for India
 
-Let's try to get a HTML table and get notifed after regular intervals with a beep sound using [beepr](https://www.r-project.org/nosvn/pandoc/beepr.html). Here we can scrape a HTML table using [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/) package.
+Let's first get the data from the data source. Here you can scrape data from any source in R. The process is fairly simple. A good post on scraping data in in R using a really good package [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/)
 
 
 ```{r message=FALSE,warning=FALSE}
 
-url_state <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSz8Qs1gE_IYpzlkFkCXGcL_BqR8hZieWVi-rphN1gfrO3H4lDtVZs4kd0C3P8Y9lhsT1rhoB-Q_cP4/pubhtml"
-
-
-
-StateCOVID_19 <- url_state %>%
-  read_html() %>%
-  html_nodes(xpath='//*[@id="1896310216"]/div/table') %>%
-  html_table()
-
-StateCOVID_19 <- StateCOVID_19[[1]]  
-
-#Setting 1 row as column names:
-StateCOVID_19 <- StateCOVID_19 %>%  row_to_names(row_number = 1)
-
-#removing column 1 as it is not necessary:
-StateCOVID_19[,3] <- NA
-StateCOVID_19 <-remove_empty(StateCOVID_19,"cols")
-StateCOVID_19 <- na.omit(StateCOVID_19)
-
-
-
- Confirmed<- StateCOVID_19$Confirmed[1]
- Deaths <- StateCOVID_19$Deaths[1]
- Recovered <- StateCOVID_19$Recovered[1]
- Active <- StateCOVID_19$Active[1]
+ myfile1 <- getURL('https://api.covid19india.org/csv/latest/state_wise.csv', 
+                    ssl.verifyhost=FALSE, ssl.verifypeer=FALSE)
+  
+  #dataset with summariesed case counts of statese
+  StateCOVID_19 <- read.csv(textConnection(myfile1), header=T)
 
  msg1 <- paste("Confirmed Cases: ",Confirmed,", Revovered:",Recovered)
  msg2<-  paste("Deaths: ",Deaths, ", Active:\n ",Active)
