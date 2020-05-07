@@ -107,20 +107,30 @@ repeat {
 
 #### Making a notifier which sends COVID-19 cases summary for India
 
-Let's first get the data from the data source. Here you can scrape data from any source in R. The process is fairly simple. A good post on scraping data in in R using a really good package [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/)
+Let's first get the data from the data source. Here you can scrape data from any source in R. The process is fairly simple. A good post on scraping data in in R using a really good package [rvest](r-bloggers.com/using-rvest-to-scrape-an-html-table/).
 
 
 ```{r message=FALSE,warning=FALSE}
 
+require(RCurl)
+
  myfile1 <- getURL('https://api.covid19india.org/csv/latest/state_wise.csv', 
                     ssl.verifyhost=FALSE, ssl.verifypeer=FALSE)
   
-  #dataset with summariesed case counts of statese
-  StateCOVID_19 <- read.csv(textConnection(myfile1), header=T)
+#dataset with summariesed case counts of statese
+StateCOVID_19 <- read.csv(textConnection(myfile1), header=T)
 
- msg1 <- paste("Confirmed Cases: ",Confirmed,", Revovered:",Recovered)
- msg2<-  paste("Deaths: ",Deaths, ", Active:\n ",Active)
- msg3 <- paste(StateCOVID_19[2,2],"\nConfirmed:",StateCOVID_19[2,3],",", "Recovered:  ",StateCOVID_19[2,4],",\n", "Deaths:  ",StateCOVID_19[2,5], ",", "Active: ",StateCOVID_19[2,6])
+#let's check the structure of data
+str(StateCOVID_19)
+
+Confirmed <- StateCOVID_19$Confirmed[1]
+Recovered <- StateCOVID_19$Recovered[1]
+Deaths <- StateCOVID_19$Deaths[1]
+Active <- StateCOVID_19$Active[1]
+
+ msg1 <- paste("Confirmed Cases: ",Confirmed,", Revovered:\n",Recovered)
+ msg2<-  paste("Deaths:",Deaths, ",Active:",Active)
+ 
 
  
 repeat {
@@ -132,11 +142,11 @@ repeat {
   notify(
     
     title = "COVID-19 India Summary",
-    msg = c(msg1,msg2,msg3)
+    msg = c(msg1,msg2)
 )
   
-  #adding the beep notification sound
-   beep("wilhelm")
+#adding the beep notification sound
+beep("wilhelm")
 
   #repeat
   sleepTime <- startTime + 60 - Sys.time()
